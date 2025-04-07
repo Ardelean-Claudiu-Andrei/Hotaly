@@ -1,0 +1,24 @@
+/* App.css */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  padding: 1rem; /* opțional, pentru spațiere */
+}
+
+/* Alte stiluri pot rămâne, de exemplu: */
+.App {
+  text-align: center;
+}
+
+/* Footer-ul (deja definit în Footer.css) */

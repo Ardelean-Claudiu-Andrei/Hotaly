@@ -1,0 +1,74 @@
+/* src/pages/Contact.css (fragmente relevante) */
+
+/* Container general pentru text și map */
+.contact-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center; /* Centrează elementele orizontal */
+  padding: 2rem 0;
+}
+
+/* Textul de contact - stilizare mai rafinată */
+.contact-text {
+  flex: 1 1 50%;
+  max-width: 600px;        /* Limitează lățimea pentru a evita textul prea lat */
+  margin: 0 auto;          /* Centrează în spațiul alocat */
+  padding: 1rem;
+  color: #444;             /* Culoare text mai subtilă */
+  line-height: 1.6;        /* Crește ușor spațiul dintre rânduri */
+  text-align: left;        /* Aliniere la stânga */
+}
+
+.contact-text h1 {
+  margin-bottom: 1rem;
+  font-size: 2rem;         /* Titlu mai vizibil */
+  color: #222;             /* O nuanță mai închisă pentru contrast */
+}
+
+.contact-text p {
+  font-size: 1.125rem;     /* Mărește puțin textul */
+  margin-bottom: 1.2rem;   /* Spațiere între paragrafe */
+}
+
+/* Stilizare pentru link-uri (ex: telefon) */
+.contact-text a {
+  color: #007bff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-text a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+/* Containerul pentru hartă */
+.map-container {
+  flex: 1 1 50%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 1rem;
+  height: 400px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Pe dispozitivele mobile, stivuiește elementele */
+@media (max-width: 768px) {
+  .contact-container {
+    flex-direction: column;
+  }
+
+  .contact-text,
+  .map-container {
+    flex: 1 1 100%;
+    max-width: 100%;
+    padding: 1rem 0;
+  }
+
+  .map-container {
+    height: 300px;
+  }
+}

@@ -1,0 +1,87 @@
+/* Stilurile de bază pentru header */
+.header-section {
+  background: #fff;
+  padding: 1rem 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px; /* setează lățimea maximă dorită */
+  margin: 0 auto;    /* centrează containerul */
+  padding: 0 1rem;   /* un mic padding pentru margini laterale */
+}
+
+
+.nav-menu {
+  position: relative;
+}
+
+/* Meniul normal pe desktop */
+.nav-menu ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-menu ul li {
+  margin: 0 1rem;
+}
+
+.nav-menu ul li a {
+  color: #333;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.nav-menu ul li a:hover {
+  color: #007bff;
+}
+
+/* Stilizarea butonului hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.hamburger .bar {
+  height: 3px;
+  width: 25px;
+  background-color: #333;
+  margin: 4px 0;
+  transition: 0.3s;
+}
+
+/* Media query pentru dispozitive mobile */
+@media (max-width: 768px) {
+  .nav-menu ul {
+    display: none; /* ascundem meniul inițial */
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #fff;
+    width: 200px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    z-index: 1000;
+  }
+  
+  /* Când meniul este deschis */
+  .nav-menu ul.open {
+    display: flex;
+  }
+  
+  .nav-menu ul li {
+    margin: 1rem;
+  }
+  
+  /* Afișăm butonul hamburger */
+  .hamburger {
+    display: flex;
+  }
+}
