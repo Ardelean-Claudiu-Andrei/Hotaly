@@ -1,6 +1,18 @@
 # 🏡 Guesthouse Reservation Platform
 
-This is a simple **React-based reservation platform** for a guesthouse. Visitors can view images of the location and send reservation requests using a custom booking form. The platform also includes two separate admin panels: one for the guesthouse client and one for the internal developer/admin.
+This is a **React-based reservation platform** for a guesthouse or a hotel. Visitors can browse images of the location, view contact information including an embedded map, and send reservation requests via a custom booking form.
+
+The platform includes **two separate admin panels**:
+- **Client Admin Panel** – allows the guesthouse owner to view and manage reservation requests.
+- **Developer Admin Panel** – provides modular configuration for the entire site, including:
+  - Accommodation name
+  - Image galleries
+  - Contact details
+  - Embedded Google Maps iframe
+  - Booking configuration options
+
+Everything is designed to be modular and easily configurable through the developer panel, making it adaptable to any type of accommodation business.
+
 
 ---
 
