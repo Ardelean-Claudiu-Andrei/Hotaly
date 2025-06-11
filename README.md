@@ -10,7 +10,7 @@ This is a simple **React-based reservation platform** for a guesthouse. Visitors
 - 📅 Booking form with validation (name, contact details, check-in/out, custom message)
 - 🔐 **Admin Panel (Client):** view submitted reservations
 - 🛠️ **Admin Panel (Developer):** internal admin access for platform setup/testing
-- 📩 Integration-ready with Firebase and/or email service providers (Mailgun, EmailJS)
+- 📩 Integration-ready with Firebase
 - 📱 Responsive design for all screen sizes
 
 ---
