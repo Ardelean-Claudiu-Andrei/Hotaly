@@ -21,7 +21,6 @@ This is a simple **React-based reservation platform** for a guesthouse. Visitors
 - **JavaScript / JSX**
 - **CSS Modules**
 - **Firebase** (Firestore & Hosting – optional)
-- **EmailJS / Mailgun** (optional email notifications)
 
 ---
 
