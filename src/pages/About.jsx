@@ -1,14 +1,15 @@
 // src/pages/About.js
 import React, { useState, useEffect } from 'react';
-import { ref, get } from 'firebase/database';
+import { ref, get, onValue } from 'firebase/database';
 import { realtimeDB } from '../firebase';
 import './About.css';
 
 const About = () => {
   const [aboutText, setAboutText] = useState('Se încarcă...');
+  const [siteSettings, setSiteSettings] = useState({ companyName: 'Your Name' });
+  const [heroImage, setHeroImage] = useState('');
 
   useEffect(() => {
-    // Preluăm datele din nodul 'siteSettings'
     const settingsRef = ref(realtimeDB, 'siteSettings');
     get(settingsRef)
       .then((snapshot) => {
@@ -25,11 +26,49 @@ const About = () => {
       });
   }, []);
 
+  useEffect(() => {
+    const settingsRef = ref(realtimeDB, 'siteSettings');
+    onValue(settingsRef, (snapshot) => {
+      if (snapshot.exists()) {
+        setSiteSettings(snapshot.val());
+      }
+    });
+  }, []);
+
+  useEffect(() => {
+    const backgroundRef = ref(realtimeDB, 'background');
+    onValue(backgroundRef, (snapshot) => {
+      if (snapshot.exists()) {
+        const data = snapshot.val();
+        const backgroundArray = Object.keys(data).map(key => data[key]);
+        if (backgroundArray.length > 0) {
+          setHeroImage(backgroundArray[0].imageBase64);
+        }
+      } else {
+        setHeroImage('');
+      }
+    });
+  }, []);
+
   return (
-    <div className="about-container container">
-      <h1>Despre Casa Ciordas</h1>
-      <p>{aboutText}</p>
-    </div>
+    <>
+      <section
+        className="hero-section-about"
+        style={{
+          backgroundImage: heroImage ? `url(${heroImage})` : 'none'
+        }}
+      >
+        <div className="hero-overlay"></div>
+        <div className="hero-text container">
+          <h1>Despre {siteSettings.companyName}</h1>
+        </div>
+      </section>
+      <div className="about-container container">
+        <div className="about-content">
+          <p>{aboutText}</p>
+        </div>
+      </div>
+    </>
   );
 };
 

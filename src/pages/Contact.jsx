@@ -5,7 +5,13 @@ import { ref, get } from 'firebase/database';
 import './Contact.css';
 
 const Contact = () => {
-  const [siteSettings, setSiteSettings] = useState({ phone: '', email: '' });
+  // Include phone, email, address and mapSrc in state.
+  const [siteSettings, setSiteSettings] = useState({ 
+    phone: '', 
+    email: '', 
+    address: '', 
+    mapSrc: '' 
+  });
 
   useEffect(() => {
     const settingsRef = ref(realtimeDB, 'siteSettings');
@@ -27,20 +33,20 @@ const Contact = () => {
       <div className="contact-text">
         <h1>Contact</h1>
         <p>
-          Pentru informații suplimentare ne gǎsiți la:
+          Pentru informații suplimentare ne găsiți la:
           <br />
           Telefon: <a href={`tel:${siteSettings.phone}`}>{siteSettings.phone}</a>
           <br />
           Email: <a href={`mailto:${siteSettings.email}`}>{siteSettings.email}</a>
           <br />
-          Adresa: Strada Ștefan cel Mare 84 A, Tășnad 445300
+          Adresa: {siteSettings.address}
           <br />
         </p>
       </div>
       <div className="map-container">
         <iframe
           title="Location Map"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2728.517620306425!2d22.600556315654132!3d47.32301507916159!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47497831f7fbe1f1%3A0xf3d24a22ac11f41a!2sStrada%20%C8%98tefan%20cel%20Mare%2084A%2C%20T%C4%83%C8%99nad%20445300!5e0!3m2!1sro!2sro!4v1680344545958!5m2!1sro!2sro"
+          src={siteSettings.mapSrc || "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1489.795138393055!2d22.56875250304182!3d47.47561181099307!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4747e62fd53a64bd%3A0xb2e48b56b4746f1c!2sCasa%20Ciordas!5e1!3m2!1sen!2sro!4v1744384870159!5m2!1sen!2sro"}
           width="100%"
           height="100%"
           frameBorder="0"

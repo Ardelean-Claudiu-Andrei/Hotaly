@@ -1,18 +1,100 @@
-/* src/pages/About.css */
+.hero-section-about {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  min-height: 40vh;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+}
+
+.hero-text {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.hero-text h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero-text p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
 .about-container {
-    padding: 4rem 0;
-    text-align: center;
-  }
-  
-  .about-container h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-  }
-  
-  .about-container p {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
+  padding: 4rem 0;
+  max-width: 900px;       /* Restrict the content width */
+  margin: 0 auto;         /* Center the container horizontally */
+  line-height: 1.8;       /* Increase line-height for readability */
+}
+
+.about-container h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.about-container p {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  color: #555;            /* A subtle text color (slightly darker than pure black) */
+}
+.about-hero {
+  /* background: url('path/to/your/hero.jpg') center/cover no-repeat; */
+  padding: 6rem 0;
+  text-align: center;
+  color: #fff;
+}
+
+.about-hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.about-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1rem; /* some spacing around your container */
+}
+
+.about-divider {
+  margin: 1.5rem auto;
+  width: 60px;
+  border: 2px solid #444;
+}
+
+.about-content {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  margin-top: -3rem; /* overlap the hero section slightly if you want */
+}
+
+.about-content p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 1.5rem;
+  animation: fadeIn 0.7s ease-in-out;
+}
+
+/* fadeIn animation, if you want to animate the text in */
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}

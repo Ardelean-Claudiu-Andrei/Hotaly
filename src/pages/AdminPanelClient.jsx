@@ -21,7 +21,7 @@ const convertFileToBase64 = (file) => {
 
 // ================== Componentul Principal - AdminPanel ==================
 
-const AdminPanel = () => {
+const AdminPanelClient = () => {
   // ================== State-uri Generale & Autentificare ==================
   const auth = getAuth();
   const [user, setUser] = useState(null);
@@ -93,34 +93,33 @@ const AdminPanel = () => {
 
   // ================== Funcții de Autentificare ==================
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
-      setUser(firebaseUser);
-    });
   
-    return () => unsubscribe();
-  }, []);
-  
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    try {
-      const userCredential = await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
-      const email = userCredential.user.email;
-  
-      if (email === 'aclaudiuandrei586@gmail.com') {
-        navigate('/admindev');
-      } else if (email === 'adresaclient@gmail.com') {
-        navigate('/adminpage');
-      } else {
-        alert("Acces interzis.");
-        await signOut(auth);
+    useEffect(() => {
+      const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+        setUser(firebaseUser);
+      });
+    
+      return () => unsubscribe();
+    }, []);
+    
+    const handleLogin = async (e) => {
+      e.preventDefault();
+      try {
+        const userCredential = await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
+        const email = userCredential.user.email;
+    
+        if (email === 'aclaudiuandrei586@gmail.com') {
+          navigate('/admindev');
+        } else if (email === 'adresaclient@gmail.com') {
+          navigate('/adminpage');
+        } else {
+          alert("Acces interzis.");
+          await signOut(auth);
+        }
+      } catch (error) {
+        console.error("Eroare la login:", error);
       }
-    } catch (error) {
-      console.error("Eroare la login:", error);
-    }
-  };
-  
+    };
 
   const handleLogout = async () => {
     try {
@@ -1306,9 +1305,10 @@ const AdminPanel = () => {
 
   // ================== Render final ==================
   // Dacă utilizatorul nu este autentificat, afișăm formularul de login
-  // if (user === null) {
-  //   return <p>Se verifică autentificarea...</p>; // fallback până se inițializează auth
-  // }
+//   if (user === null) {
+//     return <p>Se verifică autentificarea...</p>; // fallback până se inițializează auth
+    
+//   }
   if (!user) {
     return (
       <div className="admin-login login-container">
@@ -1363,31 +1363,6 @@ const AdminPanel = () => {
             >
               Lista Rezervări
             </li>
-            <li
-              className={selectedMenuItem === 'servicii' ? 'active' : ''}
-              onClick={() => setSelectedMenuItem('servicii')}
-            >
-              Serviciile noastre
-            </li>
-            <li
-              className={selectedMenuItem === 'galerie' ? 'active' : ''}
-              onClick={() => setSelectedMenuItem('galerie')}
-            >
-              Galerie
-            </li>
-            <li
-              className={selectedMenuItem === 'datele' ? 'active' : ''}
-              onClick={() => setSelectedMenuItem('datele')}
-            >
-              Datele noastre
-            </li>
-            <li
-              className={selectedMenuItem === 'background' ? 'active' : ''}
-              onClick={() => setSelectedMenuItem('background')}
-            >
-              Fundal Pagina Principală
-            </li>
-
           </ul>
         </div>
 
@@ -1410,4 +1385,4 @@ const AdminPanel = () => {
   );
 };
 
-export default AdminPanel;
+export default AdminPanelClient;

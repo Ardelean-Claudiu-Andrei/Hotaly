@@ -1,21 +1,36 @@
 // src/components/Header.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { ref, onValue } from 'firebase/database';
+import { realtimeDB } from '../firebase';
 import './Header.css';
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  
+  // State pentru setările site-ului, inclusiv numele firmei
+  const [siteSettings, setSiteSettings] = useState({ companyName: 'Your Name' });
+
   const toggleMenu = () => setMenuOpen(!menuOpen);
-  
   // Închid meniul atunci când se face click pe un link
   const handleLinkClick = () => setMenuOpen(false);
+
+  // Preluare setări site (inclusiv numele firmei) din Firebase
+  useEffect(() => {
+    const settingsRef = ref(realtimeDB, 'siteSettings');
+    onValue(settingsRef, (snapshot) => {
+      if (snapshot.exists()) {
+        setSiteSettings(snapshot.val());
+      }
+    });
+  }, []);
 
   return (
     <header className="header-section">
       <div className="container nav-container">
         <div className="logo">
-          <h1>Casa Ciordaş</h1>
+        <Link to="/" className="logo">
+          <h1>{siteSettings.companyName}</h1>
+          </Link>
         </div>
         <nav className="nav-menu">
           <div className="hamburger" onClick={toggleMenu}>

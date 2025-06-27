@@ -19,9 +19,11 @@
 
 .service-image {
   width: 100%;
-  height: auto;
+  height: 150px; /* Înălțimea fixă, similară cu .no-image */
+  object-fit: cover; /* Asigură umplerea containerului fără distorsiuni */
   border-radius: 8px;
 }
+
 
 .service-title {
   margin: 0.5rem 0;
@@ -56,4 +58,22 @@
   .service-box {
     flex: 0 0 100%; /* One per row on mobile */
   }
+}
+
+/* Adaugă keyframes pentru efectul fadeInUp */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Aplică animația la elementele cu clasa .animate-item */
+.animate-item {
+  opacity: 0; /* Asigură că elementul este inițial invizibil */
+  animation: fadeInUp 0.5s forwards; /* Durată 0.5s și păstrează starea finală */
 }

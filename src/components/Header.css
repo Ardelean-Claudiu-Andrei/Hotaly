@@ -2,7 +2,7 @@
 .header-section {
   background: #fff;
   padding: 1rem 0;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .nav-container {
@@ -84,4 +84,19 @@
   .hamburger {
     display: flex;
   }
+}
+
+/* Elimină sublinierea și culoarea implicită pentru link-ul logo */
+.logo {
+  text-decoration: none; /* Elimină sublinierea */
+  color: inherit;        /* Moștenește culoarea părintelui sau specifică o altă culoare, ex: #333 */
+}
+
+/* Asigură-te că și stările hover, focus, visited nu păstrează stilurile implicite */
+.logo:hover,
+.logo:focus,
+.logo:visited,
+.logo:active {
+  text-decoration: none;
+  color: inherit;
 }
